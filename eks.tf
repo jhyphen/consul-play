@@ -109,9 +109,14 @@ module "eks" {
   tags = {
     Environment = "test"
     Name        = "consul-test"
+    owner       = "j"
   }
 
   vpc_id = module.vpc.vpc_id
+
+  workers_group_defaults = {
+        root_volume_type = "gp2"
+  }
 
   worker_groups = [
     {
